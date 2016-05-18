@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import ReleaseList from './reducer_release_list';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  releaseList: ReleaseList
 });
 
 export default rootReducer;
