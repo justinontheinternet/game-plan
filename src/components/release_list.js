@@ -7,17 +7,25 @@ class ReleaseList extends Component {
     this.props.fetchReleaseList();
   }
 
+  renderReleaseList(game) {
+    return (
+      <div key={game.name}>
+        {game.name}
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
-        ReleaseList
+        {this.props.releaseList.map(this.renderReleaseList)}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  upcoming: state;
+  return { releaseList: state.releaseList };
 }
 
-export default connect(null, { fetchReleaseList })(ReleaseList);
+export default connect(mapStateToProps, { fetchReleaseList })(ReleaseList);

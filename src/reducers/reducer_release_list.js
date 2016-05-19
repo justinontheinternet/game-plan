@@ -1,11 +1,9 @@
 import { FETCH_RELEASE_LIST } from '../actions/index';
 
-const INITIAL_STATE = { upcoming: [] }
-
-export default function(state = INITIAL_STATE, action) {
+export default function(state = [], action) {
   switch(action.type) {
   case FETCH_RELEASE_LIST:
-    return{ upcoming: action.payload.data };
+    return action.payload.data.results;
   default:
     return state;
   }

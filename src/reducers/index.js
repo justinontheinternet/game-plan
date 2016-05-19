@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import ReleaseList from './reducer_release_list';
+import ReleaseListReducer from './reducer_release_list';
 
 const rootReducer = combineReducers({
-  releaseList: ReleaseList
+  releaseList: ReleaseListReducer
 });
 
 export default rootReducer;
