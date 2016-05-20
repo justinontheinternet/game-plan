@@ -8,18 +8,28 @@ class ReleaseList extends Component {
   }
 
   renderReleaseList(game) {
+    console.log("game is", game);
     return (
-      <div key={game.name}>
-        {game.name}
-      </div>
+      <tr key={game.name}>
+        <td>{game.name}</td>
+        <td>{game.original_release_date}</td>
+      </tr>
     )
   }
 
   render() {
     return (
-      <div>
-        {this.props.releaseList.map(this.renderReleaseList)}
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Release Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.props.releaseList.map(this.renderReleaseList)}
+        </tbody>
+      </table>
     );
   }
 }
