@@ -10,7 +10,9 @@ class ReleaseList extends Component {
 
   renderReleaseList(game) {
     let releaseDate = '';
-    console.log(game);
+    const gameURL = game.site_detail_url;
+    const regex = /\d{4,}-\d{4,}/;
+    const resourceId = gameURL.match(regex);
 
     if (!game.original_release_date) {
       releaseDate = game.expected_release_year + '-' +
@@ -22,10 +24,12 @@ class ReleaseList extends Component {
 
 
     return (
-      <tr key={game.name}>
-        <td>{game.name}</td>
-        <td>{releaseDate}</td>
-      </tr>
+      <Link to={"game/" + resourceId[0]} className="game-link" key={game.id}>
+        <li className="list-group-item" key={game.name}>
+          <span className="pull-xs-right">{releaseDate}</span>
+          <strong>{game.name}</strong>
+        </li>
+      </Link>
     )
   }
 
@@ -33,17 +37,9 @@ class ReleaseList extends Component {
     return (
       <div>
         <h3 className="title">Upcoming Releases</h3>
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Release Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.releaseList.map(this.renderReleaseList)}
-          </tbody>
-        </table>
+        <ul>
+          {this.props.releaseList.map(this.renderReleaseList)}
+        </ul>
       </div>
     );
   }
