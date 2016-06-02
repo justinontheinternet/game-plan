@@ -16,10 +16,10 @@ export default class ScreenshotModal extends Component {
   }
 
   render() {
+    const { image } = this.props;
+    
     return (
-      <div className={this.props.open ? "show-modal" : "hide-modal" }>
-        Modal Window!!
-      </div>
+      <img src={image.super_url} className={this.props.open ? "show-modal img-thumbnail" : "hide-modal" } />
     );
   }
 }

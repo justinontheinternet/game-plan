@@ -8,7 +8,9 @@ class GameShow extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { modal: false };
+    this.state = {
+      modal: false,
+      image: null };
     this.showScreenshot = this.showScreenshot.bind(this);
   }
 
@@ -27,14 +29,16 @@ class GameShow extends Component {
   }
 
   showScreenshot(image) {
-    console.log(image);
-    this.setState({modal: true});
+    this.setState({
+      modal: true,
+      image: image
+    });
   }
 
   renderScreenshot() {
     if (this.state.modal) {
       return (
-        <ScreenshotModal open={this.state.modal} />
+        <ScreenshotModal open={this.state.modal} image={this.state.image} />
       );
     };
   }

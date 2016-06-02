@@ -14,8 +14,8 @@
   position: fixed;
   top: 100px;
   left: 540px;
-  height: 50%;
-  width: 50%;
+  max-height: 85%;
+  max-width: 85%;
 }
 
 .hide-modal {
