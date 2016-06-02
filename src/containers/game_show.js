@@ -22,11 +22,12 @@ class GameShow extends Component {
 
   renderImages = (image) => {
     return (
-      <Thumbnail src={image} onClick={this.showScreenshot} key={image.small_url} />
+      <Thumbnail src={image} onClick={this.showScreenshot.bind(this, image)} key={image.small_url} />
     );
   }
 
-  showScreenshot() {
+  showScreenshot(image) {
+    console.log(image);
     this.setState({modal: true});
   }
 
@@ -45,8 +46,6 @@ class GameShow extends Component {
       return <h3>Loading...</h3>
     }
 
-    console.log('in render', currentGame.images);
-      // in return, add js calling function that changes this state
     return (
       <div>
         <h1 className="title">{currentGame.name}</h1>

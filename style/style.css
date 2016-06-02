@@ -11,7 +11,9 @@
 }
 
 .show-modal {
-  display: inline-block;
+  position: fixed;
+  top: 100px;
+  left: 540px;
   height: 50%;
   width: 50%;
 }
