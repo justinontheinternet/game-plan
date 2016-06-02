@@ -25,13 +25,14 @@ class GameShow extends Component {
       <Thumbnail src={image} onClick={this.showScreenshot} key={image.small_url} />
     );
   }
-// onClick initiate another function that sets state modal on/off
+
   showScreenshot() {
-    console.log(this.state);
     this.setState({modal: true});
-    //when this component has a modal state true, return the modal
+  }
+
+  renderScreenshot() {
     if (this.state.modal) {
-      return ( //the open prop should be determined by state of this component and will be used in ScrennshotModal component
+      return (
         <ScreenshotModal open={this.state.modal} />
       );
     };
@@ -56,6 +57,9 @@ class GameShow extends Component {
         <p className="details"><strong>Published by:</strong> {currentGame.publishers[0].name}</p>
         <div>
           {currentGame.images.map(this.renderImages)}
+        </div>
+        <div>
+          {this.renderScreenshot()}
         </div>
       </div>
     )
