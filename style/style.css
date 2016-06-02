@@ -9,3 +9,13 @@
 .details {
   font-size: 0.9em;
 }
+
+.show-modal {
+  display: inline-block;
+  height: 50%;
+  width: 50%;
+}
+
+.hide-modal {
+  display: none;
+}

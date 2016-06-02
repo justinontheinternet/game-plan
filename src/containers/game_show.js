@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchGame } from '../actions/index';
 import ScreenshotModal from '../components/screenshot_modal';
+import Thumbnail from '../components/thumbnail';
 
 class GameShow extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { modal: false };
+    this.showScreenshot = this.showScreenshot.bind(this);
   }
 
   componentWillMount() {
@@ -20,16 +22,19 @@ class GameShow extends Component {
 
   renderImages = (image) => {
     return (
-      <img className="img-thumbnail" src={image.small_url} onClick={this.showScreenshot(image)} key={image.small_url} />
-    )
+      <Thumbnail src={image} onClick={this.showScreenshot} key={image.small_url} />
+    );
   }
 // onClick initiate another function that sets state modal on/off
-  showScreenshot(image) {
+  showScreenshot() {
+    console.log(this.state);
+    this.setState({modal: true});
     //when this component has a modal state true, return the modal
-    if (this.state.modal)
-    return ( //the open prop should be determined by state of this component and will be used in ScrennshotModal component
-      <ScreenshotModal open={false} />
-    );
+    if (this.state.modal) {
+      return ( //the open prop should be determined by state of this component and will be used in ScrennshotModal component
+        <ScreenshotModal open={this.state.modal} />
+      );
+    };
   }
 
   render() {

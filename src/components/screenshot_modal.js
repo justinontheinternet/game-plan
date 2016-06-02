@@ -4,7 +4,7 @@ export default class ScreenshotModal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: this.props.open || false }
+    this.state = { open: this.props.open }
   }
 
   handleShow() {
@@ -17,7 +17,7 @@ export default class ScreenshotModal extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.open ? "show-modal" : "hide-modal" }>
         Modal Window!!
       </div>
     );
