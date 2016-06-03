@@ -17,9 +17,16 @@ export default class ScreenshotModal extends Component {
 
   render() {
     const { image } = this.props;
-    
+
     return (
-      <img src={image.super_url} className={this.props.open ? "show-modal img-thumbnail" : "hide-modal" } />
+      <div className={this.props.open ? "show-modal" : "hide-modal"}>
+        <button type="button" className="btn btn-default btn-css" aria-label="Close" onClick={this.props.onClick} >
+          <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>Close
+        </button>
+        <div>
+          <img src={image.super_url} className="modal-image" />
+        </div>
+      </div>
     );
   }
 }

@@ -38,13 +38,20 @@ class GameShow extends Component {
   renderScreenshot() {
     if (this.state.modal) {
       return (
-        <ScreenshotModal open={this.state.modal} image={this.state.image} />
+        <ScreenshotModal open={this.state.modal} image={this.state.image} onClick={this.hideScreenshot} />
       );
     };
   }
 
+  hideScreenshot = () => {
+    this.setState({
+      modal: false
+    });
+  }
+
   render() {
     const { currentGame } = this.props;
+    console.log("state is:", this.state);
 
     if (!currentGame.id) {
       return <h3>Loading...</h3>
