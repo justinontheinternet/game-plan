@@ -22,6 +22,18 @@ class GameShow extends Component {
     return `\xa0\xa0\xa0${platform.name}`;
   }
 
+  renderDeveloper() {
+    if (this.props.currentGame.developers) {
+      return this.props.currentGame.developers[0].name;
+    }
+  }
+
+  renderPublisher() {
+    if (this.props.currentGame.publishers) {
+      return this.props.currentGame.publishers[0].name;
+    }
+  }
+
   renderImages = (image) => {
     return (
       <Thumbnail src={image} onClick={this.showScreenshot.bind(this, image)} key={image.small_url} />
@@ -51,7 +63,7 @@ class GameShow extends Component {
 
   render() {
     const { currentGame } = this.props;
-    console.log("state is:", this.state);
+    console.log("currentGame", currentGame);
 
     if (!currentGame.id) {
       return <h3>Loading...</h3>
@@ -63,8 +75,8 @@ class GameShow extends Component {
         <p className="details pull-xs-right">
           <strong>Platforms:</strong>{currentGame.platforms.map(this.listPlatforms)}
         </p>
-        <p className="details"><strong>Developed by:</strong> {currentGame.developers[0].name}</p>
-        <p className="details"><strong>Published by:</strong> {currentGame.publishers[0].name}</p>
+        <p className="details"><strong>Developed by:</strong> {this.renderDeveloper()}</p>
+        <p className="details"><strong>Published by:</strong> {this.renderPublisher()}</p>
         <div>
           {currentGame.images.map(this.renderImages)}
         </div>

@@ -7,14 +7,6 @@ export default class ScreenshotModal extends Component {
     this.state = { open: this.props.open }
   }
 
-  handleShow() {
-    this.setState({open: true});
-  }
-
-  handleHide() {
-    this.setState({open: false});
-  }
-
   render() {
     const { image } = this.props;
 
@@ -23,9 +15,7 @@ export default class ScreenshotModal extends Component {
         <button type="button" className="btn btn-default btn-css" aria-label="Close" onClick={this.props.onClick} >
           <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>Close
         </button>
-        <div>
-          <img src={image.super_url} className="modal-image" />
-        </div>
+        <img src={image.super_url} className="modal-image" />
       </div>
     );
   }

@@ -28,6 +28,7 @@ class ReleaseList extends Component {
         <li className="list-group-item" key={game.name}>
           <span className="pull-xs-right">{releaseDate}</span>
           <strong>{game.name}</strong>
+          <p>{game.deck}</p>
         </li>
       </Link>
     )
