@@ -27,8 +27,8 @@ class ReleaseList extends Component {
       <Link to={"game/" + resourceId[0]} className="game-link" key={game.id}>
         <li className="list-group-item" key={game.name}>
           <span className="pull-xs-right">{releaseDate}</span>
-          <strong>{game.name}</strong>
-          <p>{game.deck}</p>
+          <strong className="game-name">{game.name}</strong>
+          <p className="game-deck">{game.deck}</p>
         </li>
       </Link>
     )

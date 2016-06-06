@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { fetchGame } from '../actions/index';
 import ScreenshotModal from '../components/screenshot_modal';
 import Thumbnail from '../components/thumbnail';
@@ -61,6 +62,11 @@ class GameShow extends Component {
     });
   }
 
+  getDescription() {
+    const { description } = this.props.currentGame;
+    return { __html: description };
+  }
+
   render() {
     const { currentGame } = this.props;
     console.log("currentGame", currentGame);
@@ -71,17 +77,20 @@ class GameShow extends Component {
 
     return (
       <div>
+        <Link to="/" className="btn btn-default">Back</Link>
         <h1 className="title">{currentGame.name}</h1>
-        <p className="details pull-xs-right">
-          <strong>Platforms:</strong>{currentGame.platforms.map(this.listPlatforms)}
-        </p>
         <p className="details"><strong>Developed by:</strong> {this.renderDeveloper()}</p>
-        <p className="details"><strong>Published by:</strong> {this.renderPublisher()}</p>
+        <p className="details space"><strong>Published by:</strong> {this.renderPublisher()}</p>
+        <p className="details space">
+          <strong>Platforms:</strong>{currentGame.platforms.map(this.listPlatforms)}
+        </p>  
         <div>
           {currentGame.images.map(this.renderImages)}
         </div>
         <div>
           {this.renderScreenshot()}
+        </div>
+        <div className="description" dangerouslySetInnerHTML={this.getDescription()}>
         </div>
       </div>
     )

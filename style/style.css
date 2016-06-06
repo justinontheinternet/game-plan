@@ -11,8 +11,17 @@
   color: black;
 }
 
+.game-name {
+  font-size: 18px;
+}
+
 .details {
   font-size: 0.9em;
+  display: inline-block;
+}
+
+.space {
+  margin-left: 20px;
 }
 
 .show-modal {
@@ -38,5 +47,9 @@
 }
 
 .game-deck {
-  font-size: 5px !important;
+  font-size: 12px !important;
+}
+
+.description {
+  margin-top: 30px;
 }
